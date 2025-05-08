@@ -1,0 +1,48 @@
+/* src/styles/global.css */
+
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body, #root {
+    height: 100%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button {
+    font-family: inherit;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  input, textarea, select, button {
+    font-family: inherit;
+  }
+  
+  /* Utility */
+  .hidden {
+    display: none !important;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  

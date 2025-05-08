@@ -1,0 +1,29 @@
+/* src/styles/components/DataTable.css */
+.data-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .data-table {
+    width: 100%;
+    min-width: 600px;        /* allow horizontal scroll on small screens */
+    border-collapse: collapse;
+    background: #fff;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #eaeaea;
+    text-align: left;
+  }
+  
+  .data-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .data-table tr:nth-child(even) {
+    background: #fafafa;
+  }
+  

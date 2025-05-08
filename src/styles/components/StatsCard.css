@@ -1,0 +1,35 @@
+/* src/styles/components/StatsCard.css */
+.stats-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+  
+    /* Responsive flex child */
+    flex: 1 1 200px;
+    margin: 0.5rem;
+  }
+  
+  .stats-card__icon {
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: #A01d46;
+  }
+  
+  .stats-card__body {
+    flex: 1;
+  }
+  
+  .stats-card__title {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  .stats-card__value {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+  }
+  

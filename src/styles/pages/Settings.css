@@ -1,0 +1,16 @@
+/* src/styles/pages/Settings.css */
+.page-container { display: flex; }
+
+.main-content {
+  margin-left: 240px;
+  padding: 1rem;
+  flex: 1;
+}
+
+.content-body {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .main-content { margin-left: 0; padding: 0.5rem; }
+}

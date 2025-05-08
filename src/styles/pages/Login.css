@@ -1,0 +1,72 @@
+/* src/styles/pages/Login.css */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f9f9f9;
+  padding: 1rem;
+}
+
+.login-form {
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.login-logo {
+  width: 120px;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.login-form h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #555;
+  text-align: left;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #A01d46;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 1.5rem;
+  }
+  .login-logo {
+    width: 100px;
+    margin-bottom: 0.75rem;
+  }
+}

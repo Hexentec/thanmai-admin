@@ -1,0 +1,39 @@
+/* Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: #fff;
+    border-bottom: 1px solid #eaeaea;
+    margin-left: 240px; /* offset content for fixed sidebar */
+  }
+  
+  .header__title {
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .header__logout {
+    background: none;
+    border: none;
+    color: #A01d46;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: text-decoration 0.2s;
+  }
+  
+  .header__logout:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 768px) {
+    .header {
+      margin-left: 0;
+      flex-wrap: wrap;      /* allow title and logout button to wrap */
+      justify-content: center;
+      text-align: center;
+    }
+    .header__logout {
+      margin-top: 0.5rem;
+    }
+  }
