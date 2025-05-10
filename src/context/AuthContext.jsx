@@ -30,11 +30,9 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     try {
       const { data } = await api.post('/auth/admin-login', { email, password });
-      localStorage.setItem('token', data.token);
-      // set header for future requests
-      api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-      const profile = await api.get('/users/profile');
-      setUser(profile.data);
+   localStorage.setItem('token', data.token);
+   api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+   setUser(data.user);
       return true;
     } catch (err) {
       console.error('Login failed', err);
