@@ -20,10 +20,12 @@ export default function CategoryForm({ category, onSuccess }) {
       formData.append('order', order);
       if (imageFile) formData.append('image', imageFile);
 
-      const url = category
+      // only edit if we actually have an _id
+      const isEdit = Boolean(category && category._id);
+      const url    = isEdit
         ? `/categories/${category._id}`
         : '/categories';
-      const method = category ? 'put' : 'post';
+     const method = isEdit ? 'put' : 'post';
 
       const res = await api[method](url, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
