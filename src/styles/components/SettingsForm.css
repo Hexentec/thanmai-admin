@@ -1,0 +1,123 @@
+/* src/styles/components/SettingsForm.css */
+
+:root {
+    --primary: #A01d46;
+    --bg-light: #FAFAFA;
+    --border: #E2E5E9;
+    --text: #333;
+    --label: #555;
+    --radius: 8px;
+    --spacing: 1rem;
+    --font: 'Segoe UI', Tahoma, sans-serif;
+  }
+  
+  .settings-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: var(--font);
+  }
+  
+  .field-group {
+    margin-bottom: var(--spacing);
+  }
+  
+  .field-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--label);
+    font-size: 0.9rem;
+  }
+  
+  .field-group input[type="text"],
+  .field-group input[type="color"],
+  .field-group textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-light);
+    font-size: 1rem;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .field-group input:focus,
+  .field-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(160,29,70,0.15);
+  }
+  
+  /* Color picker wrapper */
+  .color-input-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .color-input-wrapper input[type="color"] {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .color-code {
+    margin-left: 0.75rem;
+    font-family: monospace;
+    color: var(--text);
+  }
+  
+  /* Social fieldset */
+  .social-fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--spacing);
+    margin-bottom: var(--spacing);
+  }
+  
+  .social-fieldset legend {
+    padding: 0 0.5rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+  
+  /* Submit button */
+  .settings-form button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  
+  .settings-form button:hover:not(:disabled) {
+    background: #8e1a3d;
+    transform: translateY(-1px);
+  }
+  
+  .settings-form button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .settings-form {
+      padding: 1rem;
+      margin: 1rem;
+    }
+  }
+  

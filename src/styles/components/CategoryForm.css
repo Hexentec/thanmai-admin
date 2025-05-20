@@ -1,0 +1,100 @@
+:root {
+    --primary: #A01d46;
+    --bg-light: #FAFAFA;
+    --border: #E2E5E9;
+    --text: #333;
+    --label: #555;
+    --radius: 8px;
+    --spacing: 1rem;
+    --font: 'Segoe UI', Tahoma, sans-serif;
+  }
+  
+  /* Form wrapper – card style */
+  .category-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: var(--font);
+  }
+  
+  /* Field group */
+  .field-group {
+    margin-bottom: var(--spacing);
+  }
+  .field-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--label);
+    font-size: 0.9rem;
+  }
+  .field-group .required {
+    color: red;
+  }
+  
+  /* Inputs */
+  .category-form input[type="text"],
+  .category-form input[type="number"],
+  .category-form input[type="file"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-light);
+    font-size: 1rem;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .category-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(160,29,70,0.15);
+  }
+  
+  /* Preview */
+  .preview-container {
+    margin-bottom: var(--spacing);
+    text-align: center;
+  }
+  .preview-image {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    object-fit: cover;
+  }
+  
+  /* Submit button */
+  .category-form button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .category-form button:hover:not(:disabled) {
+    background: #8e1a3d;
+    transform: translateY(-1px);
+  }
+  .category-form button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .category-form {
+      padding: 1rem;
+      margin: 1rem;
+    }
+  }
+  

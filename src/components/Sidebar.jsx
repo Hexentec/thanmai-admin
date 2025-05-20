@@ -1,12 +1,14 @@
-// src/components/Sidebar.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../assets/logo.png';     // adjust path if needed
 import '../styles/components/Sidebar.css';
 
 export default function Sidebar() {
   return (
     <nav className="sidebar">
-      <div className="sidebar__logo">🍯 Pickle Shop</div>
+      <div className="sidebar__logo">
+        <img src={logo} alt="Thanmai Home Foods" />
+      </div>
       <ul className="sidebar__nav">
         <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
         <li><NavLink to="/products" activeClassName="active">Products</NavLink></li>
@@ -18,5 +20,5 @@ export default function Sidebar() {
         <li><NavLink to="/settings" activeClassName="active">Settings</NavLink></li>
       </ul>
     </nav>
-);
+  );
 }
