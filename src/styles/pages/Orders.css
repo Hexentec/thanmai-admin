@@ -1,17 +1,98 @@
 /* src/styles/pages/Orders.css */
-.page-container { display: flex; }
+
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f1f3f5;
+}
 
 .main-content {
-  margin-left: 240px;
-  padding: 1rem;
   flex: 1;
+  margin-left: 240px;
+  padding: 2rem;
+  background: #ffffff;
 }
 
 .content-body {
   margin-top: 1rem;
+  overflow-x: auto;
 }
 
-/* Responsive */
+/* DataTable basic styling */
+.DataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.DataTable th,
+.DataTable td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 0.95rem;
+  color: #495057;
+}
+.DataTable th {
+  background: #e9ecef;
+  font-weight: 600;
+}
+
+/* Status tags */
+.status-tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+.status-tag.created { background: #6c757d; }
+.status-tag.processing { background: #0d6efd; }
+.status-tag.shipped { background: #fd7e14; }
+.status-tag.delivered { background: #198754; }
+
+/* Tracking URL input */
+.tracking-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.edit-btn,
+.save-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.edit-btn {
+  background: #0d6efd;
+  color: #fff;
+}
+.edit-btn:hover {
+  background: #0b5ed7;
+}
+.save-btn {
+  background: #198754;
+  color: #fff;
+}
+.save-btn:hover {
+  background: #157347;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .main-content { margin-left: 0; padding: 0.5rem; }
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  .DataTable th,
+  .DataTable td {
+    padding: 0.5rem;
+  }
 }
