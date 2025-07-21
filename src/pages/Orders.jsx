@@ -1,100 +1,63 @@
-// src/pages/Orders.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';         // ← make sure this is here
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import DataTable from '../components/DataTable';
 import api from '../lib/api';
 import '../styles/pages/Orders.css';
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
-  const [editingId, setEditingId] = useState(null);
-  const [statusUpdate, setStatusUpdate] = useState('');
-  const [trackingUrl, setTrackingUrl] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchOrders();
+    api.get('/orders')
+      .then(res => setOrders(res.data || []))
+      .catch(err => console.error('Failed to fetch orders:', err))
+      .finally(() => setLoading(false));
   }, []);
 
-  const fetchOrders = async () => {
-    const { data } = await api.get('/orders');
-    setOrders(data);
-  };
-
-  const handleEdit = (order) => {
-    setEditingId(order._id);
-    setStatusUpdate(order.orderStatus);
-    setTrackingUrl(order.courierTrackingUrl || '');
-  };
-
-  const handleSave = async (id) => {
-    try {
-      const { data } = await api.patch(`/orders/${id}`, {
-        status: statusUpdate,
-        trackingUrl
-      });
-      setOrders(orders.map(o => o._id === id ? data : o));
-      setEditingId(null);
-    } catch (err) {
-      console.error('Update failed', err);
-      alert('Failed to update order.');
-    }
-  };
-
-  const columns = [
-    { key: '_id', header: 'ID' },
-    { key: 'user.email', header: 'Customer', render: row => row.user?.email },
-    { key: 'total', header: 'Total (₹)' },
-    {
-      key: 'orderStatus', header: 'Status', render: row => (
-        editingId === row._id ? (
-          <select value={statusUpdate} onChange={e => setStatusUpdate(e.target.value)}>
-            <option value="created">Created</option>
-            <option value="processing">Processing</option>
-            <option value="shipped">Shipped</option>
-            <option value="delivered">Delivered</option>
-          </select>
-        ) : (
-          <span className={`status-tag ${row.orderStatus}`}>{row.orderStatus}</span>
-        )
-      )
-    },
-    {
-      key: 'tracking', header: 'Courier Link', render: row => (
-        editingId === row._id ? (
-          <input
-            className="tracking-input"
-            type="text"
-            value={trackingUrl}
-            placeholder="Tracking URL"
-            onChange={e => setTrackingUrl(e.target.value)}
-          />
-        ) : (
-          row.courierTrackingUrl ? (
-            <a href={row.courierTrackingUrl} target="_blank">Link</a>
-          ) : (
-            '-' )
-        )
-      )
-    },
-    {
-      key: 'actions', header: 'Actions', render: row => (
-        editingId === row._id ? (
-          <button className="save-btn" onClick={() => handleSave(row._id)}>Save</button>
-        ) : (
-          <button className="edit-btn" onClick={() => handleEdit(row)}>Edit</button>
-        )
-      )
-    }
-  ];
+  if (loading) return <p className="orders-loading">Loading orders…</p>;
 
   return (
     <div className="page-container">
       <Sidebar />
       <div className="main-content">
-        <Header title="Orders Management" />
+        <Header title="Orders" />
         <div className="content-body">
-          <DataTable columns={columns} data={orders} />
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th><th>Email</th><th>Total</th>
+                <th>Payment</th><th>Order Status</th><th>Date</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.length > 0 ? orders.map(o => (
+                <tr key={o._id}>
+                  <td>{o._id}</td>
+                  <td>{o.email}</td>
+                  <td>₹{(o.total||0).toFixed(2)}</td>
+                  <td>{o.paymentStatus}</td>
+                  <td>{o.orderStatus}</td>
+                  <td>{new Date(o.createdAt).toLocaleDateString()}</td>
+                  <td>
+                    <Link
+                      to={`/orders/${o._id}`}
+                      className="view-btn"
+                    >
+                      View Details
+                    </Link>
+                  </td>
+                </tr>
+              )) : (
+                <tr>
+                  <td colSpan="7" style={{ textAlign: 'center' }}>
+                    No orders found.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

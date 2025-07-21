@@ -11,6 +11,7 @@ import BulkRequests from './pages/BulkRequests';
 import Testimonials from './pages/Testimonials';
 import Blogs from './pages/Blogs';
 import Settings from './pages/Settings';
+import OrderDetails from './pages/OrderDetails';
 
 function PrivateRoute({ children }) {
   const { user } = useContext(AuthContext);
@@ -87,6 +88,7 @@ export default function App() {
           </PrivateRoute>
         }
       />
+      <Route path="/orders/:id" element={<PrivateRoute><OrderDetails /></PrivateRoute>} />
       
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
